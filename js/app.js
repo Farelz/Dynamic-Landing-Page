@@ -19,10 +19,35 @@ function showTime() {
   hour = hour % 12 || 12;
 
   //OUTPUT TIME
-  time.innerHTML = `${hour}<span>:</span>${min}<span>:</span>${sec}`;
+  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
+    sec
+  )}`;
 
   setTimeout(showTime, 1000);
 }
 
+//Add Zeros
+function addZero(n) {
+  return (parseInt(n, 10) < 10 ? "0" : "") + n;
+}
+
+// Set Background And Greeting
+function setBgGreet() {
+  let today = new Date(),
+    hour = today.getHours();
+
+  if (hour < 12) {
+    //Morning
+    document.body.style.backgroundImage =
+      "url('../images/danielle-macinnes-IuLgi9PWETU-unsplash.jpg')";
+    greeting.textContent = "Good Morning";
+  } else if (hour < 18) {
+    //Afternoon
+  } else {
+    //Evening
+  }
+}
+
 //RUN
 showTime();
+setBgGreet();
